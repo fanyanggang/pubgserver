@@ -1,0 +1,32 @@
+#!/bin/bash
+data=`ps aux | grep "pubg.server" | grep -v grep`
+pid=`ps aux | grep "pubg.server" | grep -v grep |awk -F ' ' ' {printf $2 }'`
+
+echo "start_server: data" $data > run.log
+echo "start_server: pid:" $pid > run.log
+
+if [ ! -d "/data/logs/pubgserver" ];then
+    mkdir -p /data/logs/pubgserver
+fi
+
+restart=`ps aux | grep "pubgrestart" | grep -v grep |awk -F ' ' ' {printf $2 }'`
+kill $restart
+
+
+chmod 777 /data/app/pubgserver/scripts/pubgrestart.sh
+
+export local=/data/app/pubgserver
+nohup $local/pubg.server >> run.log 2>&1 &
+
+nohup /data/app/pubgserver/scripts/pubgrestart.sh >> run.log 2>&1 &
+
+exit 0
+
+#暂时屏蔽
+#if [ ! "$data" ]; then
+#    nohup $local/pubg.server > run.log 2>&1 &
+#    echo "nohup succ"
+#    exit 0
+#else
+#    exit 1
+#fi

@@ -1,0 +1,15 @@
+# github.com/fanyanggang/BackendPlatform v0.0.0-20200512034429-9d66cd9b7d4a
+github.com/fanyanggang/BackendPlatform/fhttp
+github.com/fanyanggang/BackendPlatform/frpc-go
+github.com/fanyanggang/BackendPlatform/fsql
+# github.com/garyburd/redigo v1.6.0
+github.com/garyburd/redigo/internal
+github.com/garyburd/redigo/redis
+# github.com/go-sql-driver/mysql v1.5.0
+github.com/go-sql-driver/mysql
+# github.com/jinzhu/gorm v1.9.12
+github.com/jinzhu/gorm
+# github.com/jinzhu/inflection v1.0.0
+github.com/jinzhu/inflection
+# github.com/wonderivan/logger v1.0.0
+github.com/wonderivan/logger

@@ -1,0 +1,15 @@
+#!/bin/bash
+pid=`ps aux | grep "pubg.server" | grep -v grep |awk -F ' ' ' {printf $2 }'`
+echo "stop_server pid:" $pid
+
+#临时修改
+sudo kill -9 $pid
+exit 0
+
+#if [ "$pid" ]; then
+#    sudo kill -9 $pid
+#    echo "stop_server succ"
+#    exit 0
+#else
+#    exit 1
+#fi

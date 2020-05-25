@@ -1,0 +1,50 @@
+version: 0.2
+
+phases:
+  install: 
+   runtime-versions: 
+     golang: 1.13
+  pre_build:
+    commands:
+     # - export GOPATH=/go
+     # - git clone https://github.com/garyburd/redigo.git
+      - mkdir -p /usr/local/go
+      - export GOROOT=/usr/local/go
+      - echo GOPATH - $GOPATH
+      - echo GOROOT - $GOROOT
+      - echo $CODEBUILD_SRC_DIR
+      # git-codecommit.ap-south-1.amazonaws.com/v1/repos/pubgserver/common
+     # - mkdir -p $GOPATH/src/github.com/garyburd/redigo/redis
+     # - cp -r ./redigo $GOPATH/src/github.com/garyburd/redigo
+     # - ls $GOPATH/src/github.com/garyburd/redigo
+     # - cd ..
+     # - mkdir -p  $GOPATH/src/github.com/fanyanggang/pubg.game.server
+     # - cp -r pubgserver/* $GOPATH/src/github.com/fanyanggang/pubg.game.server
+      #- cp -r $CODEBUILD_SRC_DIR/github.com /go/src
+      - echo path `pwd`
+      - ls
+      - mkdir -p $GOROOT/src/git-codecommit.ap-south-1.amazonaws.com/v1/repos/pubgserver
+      - cp -r * $GOROOT/src/git-codecommit.ap-south-1.amazonaws.com/v1/repos/pubgserver
+      - cp -r $CODEBUILD_SRC_DIR/vendor/ $GOROOT/src
+      #-  ls $CODEBUILD_SRC_DIR
+      #-  ls $CODEBUILD_SRC_DIR/github.com
+      #-  ls $CODEBUILD_SRC_DIR/github.com/garyburd
+      #-  ls $CODEBUILD_SRC_DIR/github.com/garyburd/redigo
+      #-  ls $CODEBUILD_SRC_DIR/github.com/garyburd/redigo/redis
+      #-  ls $GOROOT/src
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Go code...
+      - go build -o pubg.server pubg.go
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - pubg.server
+    - appspec.yml
+    - scripts/*
+    - conf/*
+
+
