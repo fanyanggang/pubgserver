@@ -31,4 +31,4 @@ const (
 
 //测试环境开关
 
-const CONTROL = false
+const CONTROL = true

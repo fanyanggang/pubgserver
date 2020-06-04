@@ -391,7 +391,7 @@ func GetUserRechargeBill(uid, phone, money int64) (map[string]string, error) {
 	}()
 
 	billData := make(map[string]string)
-	url := "http://payment.jeeto.work/v1/create_in_order"
+	url := "http://payment.internal.rummybak.com/v1/create_in_order"
 	//url := "http://192.168.1.157:6063/v1/create_in_order"
 	billID := dao.GetBillId(uid)
 	strphone := strconv.FormatInt(phone, 10)

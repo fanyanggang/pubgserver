@@ -2,11 +2,10 @@ package pubglog
 
 import (
 	"github.com/wonderivan/logger"
-	"pubgserver/model"
 	"log"
 	"os"
+	"pubgserver/model"
 )
-
 
 func init() {
 	InitLog()
@@ -18,14 +17,14 @@ func InitLog() {
 
 	// 通过配置文件配置
 	var logConf string
-	if model.CONTROL{
-		logConf = "/Users/fengqingyang/data/app/pubgserver/conf/log_test.json"
-	}else {
+	if model.CONTROL {
+		logConf = "/Users/fengqingyang/go/src/pubgserver/conf/log_test.json"
+	} else {
 		logConf = "/data/app/pubgserver/conf/log.json"
 	}
 
 	_, err = os.Stat(logConf)
-	if err != nil{
+	if err != nil {
 		if !os.IsExist(err) {
 			log.Printf("init log IsExist false:%v", err)
 			logConf = "./conf/log.json"
