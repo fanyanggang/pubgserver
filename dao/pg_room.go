@@ -132,7 +132,7 @@ func innerGetPrizeSoloTop(roomid int64) (model.SoleResultResp, error) {
 func innerGetPrizeSolo(roomid int64) (model.SoleResultResp, error) {
 	result := model.SoleResultResp{}
 	record := make([]model.RoomPlayerRecord, 0)
-	r := pubgsql.Get("pubg").Master().Table("pg_rooms_player").Where("kills > 0 and room_id = ? ", roomid).Order("kills").Find(&record)
+	r := pubgsql.Get("pubg").Master().Table("pg_rooms_player").Where("kills > 0 and room_id = ? ", roomid).Order("kills desc").Find(&record)
 	if r.Error != nil {
 		logger.Error("innerGetPrizeSolo err:%v, roomid:%v", r.Error, roomid)
 		return result, r.Error
