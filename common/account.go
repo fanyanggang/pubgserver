@@ -74,7 +74,7 @@ func GetMsgCode(phoneNum int64) int {
 	}
 	//发送用户短信验证码
 	body, _ := json.Marshal(data)
-	url := "https://github.com/fanyanggang/pubgserver.git/v1/send_sms_json"
+	url := "http://msg.internal.rummybank.com/v1/send_sms_json"
 	//body := fmt.Sprintf("phone=%d&content=%s", phoneNum, content)
 	resp, err := pubgrpc.HttpPost(context.Background(), url, string(body))
 
