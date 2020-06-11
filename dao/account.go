@@ -6,6 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/wonderivan/logger"
 	"log"
+	"math/rand"
 	"pubgserver/model"
 	"time"
 )
@@ -350,6 +351,9 @@ func AddPubgNameDB(uid, roomID, phoneNumber int64, nickname string) (int, error)
 
 func GetUserInfoDB(data *model.UserLoginReq) (*model.PubgUserRecord, int, error) {
 
+	rand.Seed(time.Now().UnixNano())
+	index := rand.Intn(4)
+
 	record := new(model.PubgUserRecord)
 	tx := pubgsql.Get("pubg").Master().Begin()
 	defer tx.Commit()
@@ -357,7 +361,7 @@ func GetUserInfoDB(data *model.UserLoginReq) (*model.PubgUserRecord, int, error)
 
 	var photo string
 	if data.Photo == "" {
-		photo = "https://jeeto-file.s3.ap-south-1.amazonaws.com/images/5.jpg"
+		photo = model.PhotoUrl[index]
 	} else {
 		photo = data.Photo
 	}
