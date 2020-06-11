@@ -35,8 +35,8 @@ const CONTROL = false
 
 var PhotoUrl = map[int]string{
 	0: "https://i0.rummybank.com/h/1.jpg",
-	1: "https://i0.rummybank.com/h/1.jpg",
-	2: "https://i0.rummybank.com/h/1.jpg",
-	3: "https://i0.rummybank.com/h/1.jpg",
-	4: "https://i0.rummybank.com/h/1.jpg",
+	1: "https://i0.rummybank.com/h/2.jpg",
+	2: "https://i0.rummybank.com/h/3.jpg",
+	3: "https://i0.rummybank.com/h/4.jpg",
+	4: "https://i0.rummybank.com/h/5.jpg",
 }
