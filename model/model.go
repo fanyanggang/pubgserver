@@ -109,6 +109,11 @@ type RoomReq struct {
 	PhoneNumber int64 `json:"phone"`
 }
 
+type StatusReq struct {
+	Uid         int64 `json:"uid"`
+	PhoneNumber int64 `json:"phone"`
+}
+
 type AddPubgNameReq struct {
 	UID         int64  `json:"uid"`
 	PhoneNumber int64  `json:"phone"`

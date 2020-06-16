@@ -62,6 +62,9 @@ func InitService() {
 	//用户提现
 	http.HandleFunc("/pubg/deposit/get", UserDepositGetHandler)
 
+	//状态接口
+	http.HandleFunc("/pubg/status/get", UserStatusGetHandler)
+
 	// 设置监听的端口
 	err := http.ListenAndServe(":9090", nil)
 	if err != nil {

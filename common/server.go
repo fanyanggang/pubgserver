@@ -333,6 +333,25 @@ func GetUserRechargeBillHandler(response http.ResponseWriter, request *http.Requ
 	response.Write(pubghttp.Success(bill).Return())
 	return
 }
+
+func UserStatusGetHandler(response http.ResponseWriter, request *http.Request) {
+	param := &model.StatusReq{}
+
+	err := CheckUserVali(param.Uid, param.PhoneNumber)
+	if err != nil {
+		response.Write(pubghttp.DMError(pubghttp.ERROR_CODE_ILLE_USER).Return())
+		return
+	}
+
+	data := map[string]int{
+		"code":1,
+	}
+
+	logger.Debug("GetUserTransactionRecordHandler succc param:%v, data:%v", param, data)
+	response.Write(pubghttp.Success(data).Return())
+	return
+}
+
 func UserDepositGetHandler(response http.ResponseWriter, request *http.Request) {
 	//logger.Debug("JoinTeamHandler succc param:%v", param)
 
