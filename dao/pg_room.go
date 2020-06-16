@@ -351,13 +351,13 @@ func GetTeamDB(uid int64, roomid int) (model.TeamResp, error) {
 	record := make([]Team, 0)
 	teamData := model.TeamResp{}
 	teamData.TeamUser = make(map[int][]model.TeamUserData, 0)
-	r := pubgsql.Get("pubg").Master().Table("pg_rooms_player").Where("room_id = ? and status = 1 ", roomid).Order("team_num").Scan(&record)
+	r := pubgsql.Get("pubg").Master().Table("pg_rooms_player").Where("room_id = ? ", roomid).Order("team_num").Scan(&record)
 
 	if r.RowsAffected == 0 {
-		logger.Error("GetTeamDB RowsAffected uid:%v, roomid:%v", uid, roomid)
+		logger.Error("GetTeamDB RowsAffected 0， uid:%v, roomid:%v", uid, roomid)
 		return teamData, fmt.Errorf("GetTeamDB RowsAffected 0, uid:%v, roomid:%v", uid, roomid)
 	} else if r.Error != nil {
-		logger.Error("GetTeamDB RowsAffected 0, uid:%v, roomid:%v", r.Error, uid, roomid)
+		logger.Error("GetTeamDB RowsAffected err:%v, uid:%v, roomid:%v", r.Error, uid, roomid)
 		return teamData, r.Error
 	}
 

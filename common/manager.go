@@ -335,7 +335,7 @@ func innerWithDeposit(uid, phone, money int64, billID, address, mail, name, payT
 		}
 	}()
 
-	url := "http://msg.internal.rummybank.com/v1/create_out_order"
+	url := "http://payment.internal.rummybank.com/v1/create_out_order"
 	//url := "http://192.168.1.157:6063/v1/create_in_order"
 	strphone := strconv.FormatInt(phone, 10)
 	struid := strconv.FormatInt(uid, 10)
