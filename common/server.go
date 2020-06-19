@@ -336,6 +336,7 @@ func GetUserRechargeBillHandler(response http.ResponseWriter, request *http.Requ
 
 func UserStatusGetHandler(response http.ResponseWriter, request *http.Request) {
 	param := &model.StatusReq{}
+	model.ParsePostRequestParams(request, param)
 
 	err := CheckUserVali(param.Uid, param.PhoneNumber)
 	if err != nil {
